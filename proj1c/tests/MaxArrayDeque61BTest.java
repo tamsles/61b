@@ -1,3 +1,5 @@
+import deque.Deque61B;
+import deque.LinkedListDeque61B;
 import org.junit.jupiter.api.*;
 
 import java.util.Comparator;
@@ -20,5 +22,19 @@ public class MaxArrayDeque61BTest {
         mad.addFirst("2");
         mad.addFirst("fury road");
         assertThat(mad.max()).isEqualTo("fury road");
+    }
+
+    @Test
+    public void testIterator() {
+        Deque61B<String> d = new LinkedListDeque61B<>();
+        d.addLast("a");
+        d.addLast("b");
+        d.addLast("c");
+
+        StringBuilder sb = new StringBuilder();
+        for (String s : d) {
+            sb.append(s);
+        }
+        assertThat(sb.toString()).isEqualTo("abc");
     }
 }

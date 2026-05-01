@@ -1,7 +1,4 @@
-package deque;
-
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -10,8 +7,6 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
     private int size;
     private int nextFirst;
     private int nextLast;
-
-
 
     public ArrayDeque61B() {
         size = 0;
@@ -121,66 +116,5 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
     @Override
     public T getRecursive(int index) {
         return null;
-    }
-
-    @Override
-    public Iterator<T> iterator() {
-        return new ArrayDequeIterator();
-    }
-
-    private class ArrayDequeIterator implements Iterator<T> {
-        private int wizPos;
-
-        ArrayDequeIterator() {
-            wizPos = 0;
-        }
-
-        @Override
-        public boolean hasNext() {
-            return wizPos < size;
-        }
-
-        @Override
-        public T next() {
-            T item = get(wizPos);
-            wizPos += 1;
-            return item;
-        }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Deque61B<?> other)) {
-            return false;
-        }
-        if (this.size() != other.size()) {
-            return false;
-        }
-
-        Iterator<T> it1 = this.iterator();
-        Iterator<?> it2 = other.iterator();
-
-        while (it1.hasNext() && it2.hasNext()) {
-            T a = it1.next();
-            Object b = it2.next();
-
-            if (a == null) {
-                if (b != null) {
-                    return false;
-                }
-            } else if (!a.equals(b)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return toList().toString();
     }
 }

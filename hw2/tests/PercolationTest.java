@@ -85,4 +85,19 @@ public class PercolationTest {
         fail("Did you write your own tests?");
     }
 
+    @Test
+    public void openSitesTest() {
+        Percolation p = new Percolation(3);
+
+        p.open(0, 0);
+        p.open(1, 0);
+        p.open(2, 0);
+
+        System.out.println("Percolates: " + p.percolates()); // 应该是 true
+
+        p.open(2, 2);
+
+        System.out.println("isOpen(2,2): " + p.isOpen(2, 2));   // true
+        System.out.println("isFull(2,2): " + p.isFull(2, 2));   // 正确答案应该是 false
+    }
 }

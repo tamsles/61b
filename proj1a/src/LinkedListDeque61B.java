@@ -1,35 +1,7 @@
-package deque;
-
-import java.util.ArrayList; // import the ArrayList class
-import java.util.Iterator;
 import java.util.List;
+import java.util.ArrayList; // import the ArrayList class
 
 public class LinkedListDeque61B<T> implements Deque61B<T> {
-
-    @Override
-    public Iterator<T> iterator() {
-        return new LinkedListDequeIterator();
-    }
-
-    private class LinkedListDequeIterator implements Iterator<T> {
-        private Node p;
-
-        LinkedListDequeIterator() {
-            p = sentinel.next;
-        }
-
-        @Override
-        public boolean hasNext() {
-            return p != sentinel;
-        }
-
-        @Override
-        public T next() {
-            T item = p.item;
-            p = p.next;
-            return item;
-        }
-    }
 
     private class Node {
         T item;
@@ -135,41 +107,5 @@ public class LinkedListDeque61B<T> implements Deque61B<T> {
         sentinel.next = sentinel;
         sentinel.prev = sentinel;
         size = 0;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Deque61B<?> other)) {
-            return false;
-        }
-        if (this.size() != other.size()) {
-            return false;
-        }
-
-        Iterator<T> it1 = this.iterator();
-        Iterator<?> it2 = other.iterator();
-
-        while (it1.hasNext() && it2.hasNext()) {
-            T a = it1.next();
-            Object b = it2.next();
-
-            if (a == null) {
-                if (b != null) {
-                    return false;
-                }
-            } else if (!a.equals(b)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return toList().toString();
     }
 }
